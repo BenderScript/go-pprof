@@ -23,5 +23,7 @@ I used Apache Benchmark. Some examples in perf.sh
 
 ## Dockerfile
 
+I provided two small utilities to build and run the docker containers
+
 
 
