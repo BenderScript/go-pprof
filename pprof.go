@@ -22,7 +22,6 @@ func InitPprof(termPprof, pprofDone chan bool) {
 	}
 
 	go func() {
-		log.Println("=============================================")
 		log.Printf("==== Starting PProf at: %s =====\n", pprofServer.Addr)
 		if err := pprofServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Could not listen on %s: %v", pprofServer.Addr, err)

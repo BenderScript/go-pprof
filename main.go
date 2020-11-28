@@ -21,6 +21,10 @@ func main() {
 
 	newRouter := mux.NewRouter()
 
+	newRouter.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+		writer.Write([]byte("Go Away!"))
+	})
+
 	server := &http.Server{
 		Handler:      newRouter,
 		Addr:         "127.0.0.1:15120",
@@ -32,7 +36,6 @@ func main() {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
-		log.Println("=============================================")
 		log.Printf("==== Starting Server at: %s =====\n", server.Addr)
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Could not listen on %s: %v", server.Addr, err)
