@@ -18,7 +18,7 @@ func InitPprof(termPprof, pprofDone chan bool) {
 		Handler:      pprofRouter,
 		Addr:         "0.0.0.0:15121",
 		WriteTimeout: 100 * time.Second,
-		ReadTimeout:  15 * time.Second,
+		ReadTimeout:  100 * time.Second,
 	}
 
 	go func() {
@@ -47,6 +47,9 @@ func InitPprof(termPprof, pprofDone chan bool) {
 // AddPprofRoutes
 func AddPprofRoutes(r *mux.Router) {
 	debugProf := r.PathPrefix("/debug/pprof").Subrouter()
+	debugProf.HandleFunc("/check", func(writer http.ResponseWriter, request *http.Request) {
+		_, _ = writer.Write([]byte("Pprof!"))
+	})
 	debugProf.HandleFunc("/", pprof.Index)
 	debugProf.HandleFunc("/cmdline", pprof.Cmdline)
 	debugProf.HandleFunc("/symbol", pprof.Symbol)
@@ -61,4 +64,5 @@ func AddPprofRoutes(r *mux.Router) {
 	debugProf.Handle("/heap", pprof.Handler("heap"))
 	debugProf.Handle("/threadcreate", pprof.Handler("threadcreate"))
 	debugProf.Handle("/block", pprof.Handler("block"))
+	debugProf.Handle("/vars", http.DefaultServeMux)
 }
