@@ -13,6 +13,7 @@ import (
 
 func main() {
 
+	// These channels are not really needed in this entire example but make things nicer
 	termPprof := make(chan bool)
 	pprofDone := make(chan bool)
 	done := make(chan bool)
@@ -43,9 +44,12 @@ func main() {
 	}()
 
 	go func() {
+		// A interrupt signal
 		<-quit
 		log.Println("Server is shutting down...")
+		// We signal pprof server to stop
 		termPprof <- true
+		// prof server tells us it is done
 		<-pprofDone
 
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -55,6 +59,7 @@ func main() {
 		if err := server.Shutdown(ctx); err != nil {
 			log.Fatalf("Could not gracefully shutdown the server: %v", err)
 		}
+		// We are done
 		close(done)
 	}()
 
