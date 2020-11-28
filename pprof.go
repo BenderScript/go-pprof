@@ -16,7 +16,7 @@ func InitPprof(termPprof, pprofDone chan bool) {
 
 	pprofServer := &http.Server{
 		Handler:      pprofRouter,
-		Addr:         "127.0.0.1:15121",
+		Addr:         "0.0.0.0:15121",
 		WriteTimeout: 100 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}

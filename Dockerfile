@@ -10,4 +10,4 @@ COPY go.sum .
 
 RUN go build
 
-CMD bash -x -c "./go-pprof
+CMD ./go-pprof
