@@ -22,7 +22,7 @@ func main() {
 	newRouter := mux.NewRouter()
 
 	newRouter.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		writer.Write([]byte("Go Away!"))
+		_, _ = writer.Write([]byte("Go Away!"))
 	})
 
 	server := &http.Server{
