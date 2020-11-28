@@ -17,5 +17,11 @@ https://stackoverflow.com/questions/19591065/profiling-go-web-application-built-
 * "/threadcreate"
 * "/block"
 
+## Performance client
+
+I used Apache Benchmark. Some examples in perf.sh
+
+## Dockerfile
+
 
 
