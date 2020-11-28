@@ -35,7 +35,7 @@ func InitPprof(termPprof, pprofDone chan bool) {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		pprofServer.SetKeepAlivesEnabled(false)
+		pprofServer.SetKeepAlivesEnabled(true)
 		if err := pprofServer.Shutdown(ctx); err != nil {
 			log.Fatalf("Could not gracefully shutdown the server: %v", err)
 		}
@@ -46,10 +46,10 @@ func InitPprof(termPprof, pprofDone chan bool) {
 
 // AddPprofRoutes
 func AddPprofRoutes(r *mux.Router) {
-	debugProf := r.PathPrefix("/debug/pprof").Subrouter()
-	debugProf.HandleFunc("/check", func(writer http.ResponseWriter, request *http.Request) {
+	r.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		_, _ = writer.Write([]byte("Pprof!"))
 	})
+	debugProf := r.PathPrefix("/debug/pprof").Subrouter()
 	debugProf.HandleFunc("/", pprof.Index)
 	debugProf.HandleFunc("/cmdline", pprof.Cmdline)
 	debugProf.HandleFunc("/symbol", pprof.Symbol)
