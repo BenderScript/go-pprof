@@ -6,3 +6,4 @@ services:
       - "15121:15121/tcp"
       - "15120:15120/tcp"
     image: go-pprof:latest
+    container_name: go-pprof
