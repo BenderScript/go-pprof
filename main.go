@@ -13,7 +13,7 @@ import (
 
 func main() {
 
-	// These channels are not really needed in this entire example but make things nicer
+	// These channels are not really needed in this example but make things nicer
 	termPprof := make(chan bool)
 	pprofDone := make(chan bool)
 	done := make(chan bool)

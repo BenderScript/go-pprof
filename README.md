@@ -16,6 +16,7 @@ https://stackoverflow.com/questions/19591065/profiling-go-web-application-built-
 * "/heap"
 * "/threadcreate"
 * "/block"
+* "/vars"
 
 ## Performance client
 
@@ -24,6 +25,20 @@ I used Apache Benchmark. Some examples in perf.sh
 ## Dockerfile
 
 I provided two small utilities to build and run the docker containers
+
+## Testing
+
+If everything goes well open your browser and go to:
+
+```
+http://localhost:15121/
+
+You shoould see: "Pprof!"
+
+http://localhost:15121/
+
+You shoould see: "Go Away!"
+```
 
 
 
