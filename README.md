@@ -27,6 +27,8 @@ Simply executing below should do the trick:
 
 ```
 
+Pprof runs on port 15121 and webserver on 15120
+
 ## Performance client
 
 I used Apache Benchmark. Some examples in perf.sh
