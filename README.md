@@ -18,6 +18,15 @@ https://stackoverflow.com/questions/19591065/profiling-go-web-application-built-
 * "/block"
 * "/vars"
 
+## Usage
+
+Simply executing below should do the trick:
+
+```
+./docker_run.sh
+
+```
+
 ## Performance client
 
 I used Apache Benchmark. Some examples in perf.sh
