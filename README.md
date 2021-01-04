@@ -1,6 +1,6 @@
 # GO PPROF Example
 
-Simple example of Gorilla MUX running a simple web server and a Pprof Server.
+A forcefylly simple example of Gorilla MUX running a simple web server and a Pprof Server.
 
 PProf Server has all endpoints enabled:
 
